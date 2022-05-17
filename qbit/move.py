@@ -17,7 +17,7 @@ log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 nowString = datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
 log("move the finish downloding media @ date and time:{}".format(nowString))
 log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-
+log("torrent name: {}".format(torrentName))
 
 config = configparser.ConfigParser()
 log("read config.ini")
@@ -35,10 +35,10 @@ for torrent in qbt_client.torrents_info():
     if torrent.name == torrentName:
         category = torrent.category
         setPath = ""
-        if len(config['targetDir'][torrent.category]) > 0:
+        if len(category) > 0 and len(config['targetDir'][torrent.category]) > 0:
             setPath = config['targetDir'][torrent.category.lower()]
-        if len(setPath) <= 0:
-            setPath = config['targetDir'][torrent.tag.lower()]
+        if len(setPath) <= 0 and len(torrent.tags) > 0:
+            setPath = config['targetDir'][torrent.tags.lower()]
         if len(setPath) <= 0:
             setPath = config['targetDir']["other"]
         log("move files to target dir. torrentName: '{}', targetDir: '{}'".format(
