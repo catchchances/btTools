@@ -9,7 +9,7 @@ torrentName = sys.argv[1]
 
 def log(log):
     with open("c:/app/btTools/qbit/log/qMove.log", 'a', encoding='utf-8') as logFile:
-        logFile.write("\n"+log)
+        logFile.write("\n" + str(datetime.datetime.now()) + " " + log)
 
 
 log("")

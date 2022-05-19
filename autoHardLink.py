@@ -7,7 +7,7 @@ import glob
 
 def log(log):
     with open("C:/app/btTools/autoHardLink.log", 'a', encoding='utf-8') as logFile:
-        logFile.write("\n"+log)
+        logFile.write("\n" + str(datetime.datetime.now()) + " " + log)
 
 
 log("")

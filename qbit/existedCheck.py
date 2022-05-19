@@ -9,7 +9,7 @@ from os.path import exists
 
 def log(log):
     with open("c:/app/btTools/qbit/log/existedCheck.log", 'a', encoding='utf-8') as logFile:
-        logFile.write("\n" + log)
+        logFile.write("\n" + str(datetime.datetime.now()) + " " + log)
 
 
 
@@ -232,7 +232,6 @@ torrents =getTorrents()
 for torrent in torrents:
     if torrent.name in fileNamesWithDone:
         log("torrent existed in tableFile. Skip! :{}".format(torrent.name))
-        log("")
         continue
     result = callCheck(torrent)
     if result is True:
